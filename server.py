@@ -201,7 +201,7 @@ def getfileref():
     if not settings.ALLOW_STATIC_FILE_ACCESS:
         abort(404)
     response.content_type = 'text/plain; charset=utf-8'
-    return "http://%s:%d/static/%s" % (settings.HOST, settings.PORT,
+    return "http://%s:%d/static/%s" % (settings.MASQHOST, settings.MASQPORT,
                                        pathname2url(resolve_file()))
 @route('/fileget')
 @require_token('filename')
@@ -327,9 +327,9 @@ def testkey():
 def web_asset_store():
     """Serve an XML description of the URLs available here."""
     response.content_type = 'text/xml; charset=utf-8'
-    return template('web_asset_store.xml', host="%s:%d" % (settings.HOST, settings.PORT))
+    return template('web_asset_store.xml', host="%s:%d" % (settings.MASQHOST, settings.MASQPORT))
 
 if __name__ == '__main__':
     from bottle import run
-    run(host='0.0.0.0', port=settings.PORT, server=settings.SERVER,
+    run(host=settings.HOST, port=settings.PORT, server=settings.SERVER,
         debug=settings.DEBUG, reloader=settings.DEBUG)
