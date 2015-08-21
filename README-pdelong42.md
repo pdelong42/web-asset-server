@@ -19,3 +19,10 @@ talking to an asset server over HTTPS.
 There's probably a better way to do what I'm doing (probably involving
 CGI variables), so feel free to scrap my code in favor of doing it the
 right way. :-)
+
+ToDo: I also need to account for the possibility that the proxying may
+rewrite the pathname part of the URL.  Take this Apache config snippet
+for example:
+
+   ProxyPass        /web-asset-server http://www.example.com:8080
+   ProxyPassReverse /web-asset-server http://www.example.com:8080
