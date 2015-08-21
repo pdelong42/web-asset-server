@@ -27,7 +27,7 @@ REQUIRE_KEY_FOR_GET = False
 ALLOW_STATIC_FILE_ACCESS = True
 
 # Set these to the real address and port the server will bind to.
-HOST = 127.0.0.1
+HOST = '127.0.0.1'
 PORT = 8080
 
 # If you front this with a proxy of some kind (e.g., Apache's
